@@ -183,11 +183,30 @@ async function main() {
   try {
     const page = await browser.newPage();
     await page.goto(NOTICE_BOARD_URL, { waitUntil: "networkidle2", timeout: 60000 });
-    // Dodatna pauza da se Keycloak silent SSO (iframe/postMessage) sigurno
-    // stigne dovršiti prije prvog našeg poziva.
-    await new Promise((r) => setTimeout(r, 3000));
 
-    console.log("Stranica učitana, tražim nove akte...");
+    console.log("Stranica učitana, čekam da se Keycloak silent SSO dovrši...");
+    // Umjesto fiksne pauze, pokušavaj pravi API poziv dok ne prođe (do 401
+    // nestane) ili dok ne isteknemo pokušaje - SSO vrijeme varira i fiksna
+    // pauza je nepouzdana.
+    let ssoSpreman = false;
+    let zadnjaGreska = null;
+    for (let pokusaj = 1; pokusaj <= 8; pokusaj++) {
+      try {
+        await fetchCaseActsPage(page, 0, 1); // probni poziv, samo 1 zapis
+        ssoSpreman = true;
+        console.log(`SSO spreman nakon pokušaja ${pokusaj}.`);
+        break;
+      } catch (err) {
+        zadnjaGreska = err;
+        console.log(`  Pokušaj ${pokusaj}/8 neuspio (${err.message}), čekam 2s...`);
+        await new Promise((r) => setTimeout(r, 2000));
+      }
+    }
+    if (!ssoSpreman) {
+      throw new Error(`SSO se nije dovršio nakon 8 pokušaja: ${zadnjaGreska?.message}`);
+    }
+
+    console.log("Tražim nove akte...");
     newActs = await fetchNewCaseActs(page, seenIds);
     console.log(`Pronađeno ${newActs.length} novih relevantnih akata.`);
 
