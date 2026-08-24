@@ -48,6 +48,20 @@
       "to": "2026-08-17T02:19:47Z",
       "count": 0,
       "file": "data/zgrade/novo-2026-08-17.json"
+    },
+    {
+      "date": "2026-08-24",
+      "from": "2026-08-17T02:19:47Z",
+      "to": "2026-08-24T02:19:47Z",
+      "count": 0,
+      "file": "data/zgrade/novo-2026-08-24.json"
+    },
+    {
+      "date": "2026-08-24",
+      "from": "2026-08-24T02:19:47Z",
+      "to": "2026-08-24T02:22:50Z",
+      "count": 0,
+      "file": "data/zgrade/novo-2026-08-24.json"
     }
   ]
 }
