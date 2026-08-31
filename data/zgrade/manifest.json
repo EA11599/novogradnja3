@@ -62,6 +62,20 @@
       "to": "2026-08-24T02:22:50Z",
       "count": 0,
       "file": "data/zgrade/novo-2026-08-24.json"
+    },
+    {
+      "date": "2026-08-31",
+      "from": "2026-08-24T02:22:50Z",
+      "to": "2026-08-31T02:22:50Z",
+      "count": 0,
+      "file": "data/zgrade/novo-2026-08-31.json"
+    },
+    {
+      "date": "2026-08-31",
+      "from": "2026-08-31T02:22:50Z",
+      "to": "2026-08-31T06:44:40Z",
+      "count": 0,
+      "file": "data/zgrade/novo-2026-08-31.json"
     }
   ]
 }
