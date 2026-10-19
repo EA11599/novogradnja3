@@ -153,6 +153,13 @@
       "to": "2026-10-12T07:01:40Z",
       "count": 0,
       "file": "data/zgrade/novo-2026-10-12.json"
+    },
+    {
+      "date": "2026-10-19",
+      "from": "2026-10-12T07:01:40Z",
+      "to": "2026-10-19T05:49:09Z",
+      "count": 0,
+      "file": "data/zgrade/novo-2026-10-19.json"
     }
   ]
 }
